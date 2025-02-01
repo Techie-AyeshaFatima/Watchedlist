@@ -6,7 +6,7 @@ Video overview: <[URL HERE](https://youtu.be/YpCvoQmPlpM)>
 
 WatchedList is a web application that allows users to search for movies or dramas and categorize them into watchlist, watched list, or dropped list. This project was developed as part of the CS50W capstone project.
 
-!(watchedlist.png)
+![](watchedlist.png)
 
 ## Purpose
 
