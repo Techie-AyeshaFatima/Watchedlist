@@ -6,17 +6,11 @@ Video overview: <[URL HERE](https://youtu.be/YpCvoQmPlpM)>
 
 WatchedList is a web application that allows users to search for movies or dramas and categorize them into watchlist, watched list, or dropped list. This project was developed as part of the CS50W capstone project.
 
+!(watchedlist.png)
+
 ## Purpose
 
 The purpose of WatchedList is to provide users with a convenient and organized way to manage their movie and drama viewing experiences. By allowing users to search for titles, categorize them into watchlist, watched list, or dropped list, and rate them, WatchedList aims to enhance the user's ability to keep track of their entertainment preferences and viewing history. The application leverages the OMDb API to offer detailed information about each title, making it easier for users to discover new content and make informed decisions about what to watch next.
-
-## Distinctiveness and Complexity
-
-WatchedList stands out from other projects in the CS50W course due to its unique combination of features and the challenges involved in its implementation. Unlike other projects, WatchedList integrates the OMDb API to provide users with detailed information about movies and dramas. This required learning how to interact with an external API, handle API requests, and process the returned data.
-
-One of the most challenging aspects of this project was implementing the star rating system. This feature required a deep understanding of JavaScript to create an interactive and user-friendly rating interface. Additionally, integrating the rating system with the Django backend to store and retrieve user ratings added another layer of complexity.
-
-The project also emphasizes a mobile-responsive design, ensuring that users can access and use the application seamlessly on various devices. This required careful consideration of CSS and Bootstrap to create a flexible and adaptive layout.
 
 ## Features
 
