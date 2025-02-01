@@ -1,0 +1,52 @@
+{% extends "watchedlist/layout.html" %}
+
+{% block body %}
+<nav class="navbar" style="padding:1% 30% 0% 20% ;">
+    <ul class="nav">
+        <li class="nav-item">
+            <form action="{% url 'search' %}" method="post" class="d-flex" role="search">
+                {% csrf_token %}
+                <input id="search" class="form-control me-2" type="search" name="searched" style="width: 25rem;" placeholder="Search for Movies or Dramas" aria-label="Search" autocomplete="off">
+                <button class="search btn btn-outline-secondary" type="submit">Search</button>
+            </form>
+        </li></ul>
+        <li class="nav-item d-flex">
+            <form method="get" class="d-flex" role="filter"> 
+                <select name="type" class="form-control me-2"> 
+                    <option value="">All</option> 
+                    <option value="movie">Movies</option> 
+                    <option value="series">Series</option> 
+                </select> 
+                <button class="btn btn-outline-secondary" type="submit" style="margin-left: 4px;">Filter</button> 
+            </form>
+        </li>   
+</nav>
+
+<div class="row mx-3" style="width: 100%; justify-items: center; padding-left: 10%; padding-right: 10%;">
+    {% for item in droppedlist %}
+        {% if not item %}
+            <p>Your droppedlist is empty</p>
+        {% else %}
+            <a class="atem" href="{% url 'item' id=item.item_id %}">
+                <div class="card" style="width: 14rem; height: 30rem; margin: 1rem; background-color: black; box-shadow:0.5px 0.5px 1px 1px rgba(255, 255, 255, 0.13)">
+                    <img style="border: 5px solid black;" src="{{ item.image_url }}" alt="{{ item.title }} poster">
+                    <div class="card-body">
+                        <h5 class="title">{{ item.title }}</h5>
+                        <p class="card-text">{{ item.type}}</p>
+                        <div class="rating-star">
+                            <span>
+                                <i class="fa fa-star{% if item.rate == 0.5 %}-half-o{% elif item.rate < 1 %}-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if item.rate == 1.5 %}-half-o{% elif item.rate < 2 %}-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if item.rate == 2.5 %}-half-o{% elif item.rate < 3 %}-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if item.rate == 3.5 %}-half-o{% elif item.rate < 4 %}-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if item.rate == 4.5 %}-half-o{% elif item.rate < 5 %}-o {% endif %}" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

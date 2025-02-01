@@ -1,0 +1,45 @@
+/* hiding the radio buttons */
+.rate input{
+display: none;
+}
+
+
+.rate label{
+    float: right;
+}
+
+/* stars */
+.rate label:before{
+    display: inline-block;
+    font-size: 1.2rem;
+    font-family: FontAwesome;
+    content: "\f005";
+    margin: 0;
+    padding: 0.3rem 0.2rem;
+    cursor: pointer;
+}
+
+/* half stars */
+.rate .half:before{
+    content: "\f089";
+    position: absolute;
+    padding-right: 0;
+}
+
+/* clickeing and hovering */
+.rate input:checked ~ label,
+.rate label:hover ~ label { 
+    color: #ccc923;
+}
+
+/* hover highlight */
+.rate input:checked + .rate label:hover, 
+.rate input:checked ~ .rate label:hover,
+.rate input:checked ~ .rate label:hover ~ .rate label,
+.rate label:hover ~ .rate input:checked ~ .rate label{
+    color: #f5b301;
+}
+
+.fa-star, .fa-star-half-o, .fa-star-o {
+    color: gold; /* Change this to your desired color */ 
+}

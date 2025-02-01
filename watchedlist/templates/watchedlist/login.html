@@ -1,0 +1,35 @@
+{% extends "watchedlist/layout.html" %} {% load static %}
+
+{% block body %}
+<style>
+    body {
+        background-image: url("{% static 'watchedlist/img0.png' %}");
+        background-size: cover; /* This makes the image cover the entire page */
+        background-repeat: no-repeat; /* This prevents the image from repeating */
+        background-attachment: fixed; /* This makes the background image fixed when scrolling */
+        background-attachment: fixed; /* This makes the background image fixed when scrolling */ 
+        background-position: center; /* This centers the background image */
+    }
+</style>
+<div class="container">
+    <div class="form-container"><br>
+    <h2>Login</h2><br>
+
+    {% if message %}
+        <div style="color: rgba(255, 255, 255, 0.719);"> {{ message }}</div>
+    {% endif %}
+        <br>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="username" placeholder="Username" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Login">
+    </form><br><br><br> 
+
+    <p style="color: rgba(255, 255, 255, 0.534);">Don't have an account? </p><a href="{% url 'register' %}">Register here.</a>
+</div>
+{% endblock %}

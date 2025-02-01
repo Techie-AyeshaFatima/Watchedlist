@@ -1,0 +1,83 @@
+{% extends "watchedlist/layout.html" %}{% load static %}
+
+{% block body %}
+<div style="width: 100%; justify-items: left; padding: 1% 0% 0% 7%;">
+    {% if message %}
+        <div style="padding:2% 23% 0 25%; color: rgba(255, 255, 255, 0.719);"> <h3>{{ message }}</h3></div>
+    {% endif %}
+    <h2 style="padding-left: 3%;">{{ item.Title }} ({{ item.Year }})</h2>
+    <div class="row mx-3">
+        <div class="card" style="width: 36rem; height: 510px; justify-items: left;padding: 0.5rem 1rem;margin: 0.5rem; background-color: rgba(0, 0, 139, 0.116); border: none; color: rgba(255, 255, 255, 0.623); font-size: larger;">
+            <p class="card-text"><b><i>{{ item.Type}}</i></b>: {{ item.Genre }}</p>
+            <p class="card-text">{{ item.Plot }}</p>
+            <p><b>Starring: </b>{{item.Actors}}</p>
+            <p><b>Origin/Language: </b>{{item.Country}}/{{item.Language}}</p>
+            {% if user.is_authenticated %}
+            <div>
+                <form action="{% url 'update_list' id=item.imdbID %}" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <input type="radio" class="mylist" name="btnradio" id="btnradio1" value="watchlist" autocomplete="off"
+                        {% if itemdata and itemdata.list == 'watchlist' %}checked{% endif %}>
+                        <label class="btn btn-outline-secondary" for="btnradio1">watchlist</label>
+                    
+                        <input type="radio" class="mylist" name="btnradio" id="btnradio2" value="watchedlist" autocomplete="off"
+                        {% if itemdata and itemdata.list == 'watchedlist' %}checked{% endif %}>
+                        <label class="btn btn-outline-secondary" for="btnradio2">watchedlist</label>
+                    
+                        <input type="radio" class="mylist" name="btnradio" id="btnradio3" value="droppedlist" autocomplete="off"
+                        {% if itemdata and itemdata.list == 'droppedlist' %}checked{% endif %}>
+                        <label class="btn btn-outline-secondary" for="btnradio3">Droppedlist</label>
+                    </div>
+
+                    <textarea data-bs-theme="dark" style="width: 92%;padding: 5px;margin-top: 13px; margin-bottom: 5px; background-color: rgba(255, 255, 255, 0.185); color: rgba(255, 255, 255, 0.836);" name="note" placeholder="Note or Comment...">{% if itemdata %}{{ itemdata.comment }}{% endif %}</textarea><br>
+                    
+                    <div class="rate" id="rate" style="display: none;"> 
+                        <input type="radio" name="rating" id="rating10" value="5" autocomplete="off"
+                        {% if itemdata and itemdata.rate == 5 %}checked="True" {% endif %}>
+                        <label for="rating10" title="5"></label> 
+                        <input type="radio" name="rating" id="rating9" value="4.5" autocomplete="off"
+                        {% if itemdata and itemdata.rate == 4.5 %}checked="True"{% endif %}>
+                        <label class="half" for="rating9" title="4.5"></label>
+                        <input type="radio" name="rating" id="rating8" value="4" autocomplete="off"
+                        {% if itemdata and itemdata.rate == 4 %}checked{% endif %}>
+                        <label for="rating8" title="4"></label>
+                        <input type="radio" name="rating" id="rating7" value="3.5" autocomplete="off"
+                        {% if itemdata and itemdata.rate == 3.5 %}checked{% endif %}>
+                        <label class="half" for="rating7" title="3.5"></label>
+                        <input type="radio" name="rating" id="rating6" value="3" autocomplete="off"
+                        {% if itemdata and itemdata.rate == 3 %}checked{% endif %}>
+                        <label for="rating6" title="3"></label>
+                        <input type="radio" name="rating" id="rating5" value="2.5" autocomplete="off"
+                        {% if itemdata and itemdata.rate == 2.5 %}checked{% endif %}>
+                        <label class="half" for="rating5" title="2.5"></label>
+                        <input type="radio" name="rating" id="rating4" value="2" autocomplete="off"
+                        {% if itemdata and itemdata.rate == 2 %}checked{% endif %}>
+                        <label for="rating4" title="2"></label>
+                        <input type="radio" name="rating" id="rating3" value="1.5" autocomplete="off"
+                        {% if itemdata and itemdata.rate == 1.5 %}checked{% endif %}>
+                        <label class="half" for="rating3" title="1.5"></label>
+                        <input type="radio" name="rating" id="rating2" value="1" autocomplete="off"
+                        {% if itemdata and itemdata.rate == 1 %}checked{% endif %}>
+                        <label for="rating2" title="1"></label>
+                        <input type="radio" name="rating" id="rating1" value="0.5" autocomplete="off"
+                        {% if itemdata and itemdata.rate == 0.5 %}checked{% endif %}>
+                        <label class="half" for="rating1" title="0.5"></label>
+                    </div>
+                    <div>
+                    <input type="submit" class="btn btn-outline-info" value="add to list">
+                    </div>
+                </form>
+            </div>
+            {% endif %}         
+        </div>
+        <div class="card" style="height: max-content; width: min-content;margin-top: 1rem; padding: 1rem; margin: 0.5rem; background-color: rgba(0, 0, 139, 0.116);">
+            <img src="{{ item.Poster }}" alt="{{ item.Title }} poster" height="476px" style="border: black 2px; padding: 3px;">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'watchedlist/item.js' %}"></script>
+{% endblock %}

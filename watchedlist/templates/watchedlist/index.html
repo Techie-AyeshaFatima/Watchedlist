@@ -1,0 +1,28 @@
+{% extends "watchedlist/layout.html" %}{% load static %}
+
+{% block body %}
+<hr>
+
+<div class="container-fluid" style="width: 50%; float:inherit; padding-left: 18px;">
+  <form action="{% url 'search' %}" method="post" class="d-flex" role="search">
+    {% csrf_token %}
+    <input id="search" class="form-control me-2" type="search" name="searched" style="width: 25rem;" placeholder="Search for Movies or Dramas" aria-label="Search" autocomplete="off">
+    <button class="search btn btn-outline-secondary" type="submit">Search</button>
+  </form>
+</div>
+
+<div class="position-absolute top-50 start-50 translate-middle" style=" padding: 1% 25%;">
+  <p><h3>Welcome to </h3><h1>WATCHEDLIST</h1></p>
+  <div id="slider">
+      <figure>
+          <img src="{% static 'watchedlist/img1.jpg' %}">
+          <img src="{% static 'watchedlist/img4.jpg' %}">
+          <img src="{% static 'watchedlist/img2.jpg' %}">
+          <img src="{% static 'watchedlist/img5.jpg' %}">
+          <img src="{% static 'watchedlist/img1.jpg' %}">
+      </figure>
+    </div>
+</div>
+
+<div class="center slider2">
+{% endblock %}

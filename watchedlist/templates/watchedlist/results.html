@@ -1,0 +1,29 @@
+{% extends "watchedlist/layout.html" %}
+
+{% block body %}
+<div class="container-fluid" style="width: 50%; float:inherit; padding: 18px;">
+    <form action="{% url 'search' %}" method="post" class="d-flex" role="search">
+      {% csrf_token %}
+      <input id="search" class="form-control me-2" type="search" name="searched" style="width: 25rem;" placeholder="Search for Movies or Dramas" aria-label="Search" autocomplete="off">
+      <button class="search btn btn-outline-secondary" type="submit">Search</button>
+    </form>
+</div>
+<div class="row mx-3" style="width: 100%; justify-items: center; padding-left: 10%; padding-right: 10%;">
+    {% if message %}
+        <div style="padding:2% 23% 0 25%; color: rgba(255, 255, 255, 0.719);"> <h3>{{ message }}</h3></div>
+    {% endif %}
+    {% for item in results %}
+    <a class="atem" href="{% url 'item' id=item.imdbID %}">
+        <div class="card" style="width: 14rem; height: 32rem; margin: 1rem; background-color: black; box-shadow:0.5px 0.5px 1px 1px rgba(255, 255, 255, 0.13)">
+            <img style="border: 5px solid black; height: 20.7rem;" src="{{ item.Poster }}" alt="{{ item.Title }} poster">
+            <div class="card-body">
+            <h5 class="title">{{ item.Title }}</h5>
+            <p class="card-text">{{ item.Type}}</p>
+            <h5>{{ item.Year }}</h5>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+@media (max-width:1200px){
+.filter{
+    padding: 1% 25% 0 25%;
+    margin-top: 10px;
+}
+}
+
+body {
+    margin:0;
+    padding: 0px;
+    background: #000;
+}
+
+a{
+    color: white;
+}
+
+h1{
+    color: rgba(255, 255, 255, 0.87);
+}
+
+h2{
+    color: rgba(255, 255, 255, 0.658);   
+}
+
+h3{
+    color: rgba(255, 255, 255, 0.582);
+}
+
+#slider{
+    overflow: hidden;
+}
+#slider figure{
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 40s slider infinite;
+}
+#slider figure img{
+    float: left;
+    width: 20%;
+}
+
+@keyframes slider{
+    0%{
+        left:0;
+    }
+    100%{
+        left:-400%;
+    }
+}
+
+
+.center{
+    align-content: center;
+    position: relative;
+}
+
+.heading{
+    align-items: center;
+    color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.mylist{
+    border-radius: 50%;
+    display: none;
+    margin-right: 10px ;
+}
+
+.container { 
+    display: flex; 
+    height: 90vh; 
+} 
+    
+.form-container { 
+    justify-content: left; 
+    align-items: center; 
+    padding-right: 10%;
+} 
+.image-container { 
+    flex: 1; background-image: url('img.png'); 
+    background-size: cover; background-position: right; }
+
+.navi {
+    background-color: #000;
+}
+
+.search {
+    margin-left: 4px;
+    padding: 0 0.9rem;
+}
+
+.atem:hover{
+    color: rgba(255, 255, 255, 0.575);
+    text-decoration: solid;
+}
